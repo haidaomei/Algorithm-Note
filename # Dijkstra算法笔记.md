@@ -36,7 +36,7 @@
 
 使用该嵌套容器存储有向图的定义在c++中如下:
 
-	vector<vector<pair<int, int>>> a(947);//初始化947行,每行的列没有初始化,后面会使用pushback往后推
+    vector<vector<pair<int, int>>> a(947);//初始化947行,每行的列没有初始化,后面会使用pushback往后推
     a[0].push_back({ 1, 1 });//0到1权重1
     a[0].push_back({ 2, 5 });//0到2权重5
     a[1].push_back({ 2, 2 });//1到2权重2
@@ -47,18 +47,18 @@
 使用该嵌套容器存储无向图的定义在c+=中如下:
 
 ```
-    graph[0].push_back({1, 1});
-    graph[1].push_back({0, 1});
-    graph[0].push_back({2, 5});
-    graph[2].push_back({0, 5});
-    graph[1].push_back({2, 2});
-    graph[2].push_back({1, 2});
-    graph[1].push_back({3, 6});
-    graph[3].push_back({1, 6});
-    graph[2].push_back({3, 3});
-    graph[3].push_back({2, 3});
-    graph[3].push_back({0, 4});
-    graph[0].push_back({3, 4});
+graph[0].push_back({1, 1});
+graph[1].push_back({0, 1});
+graph[0].push_back({2, 5});
+graph[2].push_back({0, 5});
+graph[1].push_back({2, 2});
+graph[2].push_back({1, 2});
+graph[1].push_back({3, 6});
+graph[3].push_back({1, 6});
+graph[2].push_back({3, 3});
+graph[3].push_back({2, 3});
+graph[3].push_back({0, 4});
+graph[0].push_back({3, 4});
 ```
 
 经过对比可以发现,有向图使用数组行号代表点,使用pair中的first代表与其相邻的点,数组行号和pair中的first组成的关系即为一个箭头,从数组行号代表的点指向与其相邻的点;无向图中,来回指向就代表了无向
