@@ -141,7 +141,7 @@ vector<int> dijkstra(int start, int n)//dijkstra算法函数,要求输入一个�
     vector<int> distance(n, INT_MAX);//创建一个含有n个元素,每个元素的值为关键字INT_MAX的数组distance,INT_MAX关键字代表int型数据所能储存的最大值
     vector<bool> visited(n, false);//布尔数组,表示每个节点是否已经处理,处理则1
     distance[start] = 0;//起点到自身的距离为0,注意这里必须为start不能为0,因为要处理的不一定是点0,而有可能是其他的点,这个点通过函数的形参输入
-    for (int i = 0; i < n; i++)//循环n次，每次处理一个节点
+    for (int i = 0; i < n; i++)//循环n次,每次处理一个节点
     {
         int point1 = -1;//这里point1代表被处理的点,每次大循环都要初始化point1为-1,是代表还没选中一个点进行处理,选中之后会在下面这个for循环对point1进行赋值(如果点没被处理完,下面这个for循环是一定能找出未处理的点的,所以如果下面这个for循环没把point赋值,说明点已经处理完毕,于是有下面这个for循环再下面的if判断)
         int minimumdistance = INT_MAX;//初始化未处理的点到原点的距离为INT_MAX(无限大)
