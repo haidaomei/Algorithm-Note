@@ -162,10 +162,10 @@ vector<int> dijkstra(int start, int n)//dijkstra算法函数,要求输入一个�
         {//这个for循环中analysis并不代表vector<pair<int,int>>,而是代表pair<int,int>;for (auto analysis : graph[point1])这种语法,在C++11之后,本身代表遍历冒号的顺序容器的每一个元素,所以这里是遍历顺序容器vector中的每一个pair,在进行程序的语言移植时需要特别注意
             int point2 = analysis.first;//这个point2表示的是被遍历的点
             int weight = analysis.second;//表示权重,也就是距离
-            if (!visited[point2] && distance[point2] > distance[point1] + weight)//如果point2没被visit且point2到原点的距离大于point1目前到原点的最短距离加point1到point2的距离
+            if (!visited[point2] && distance[point2] > distance[point1] + weight)//如果point2没被visit,且point2目前到原点的最短路径大于point1目前到原点的最短路径加point1到point2的距离
             {
-                distance[point2] = distance[point1] + weight;//那么point2到原点的距离等于point1到原点的距离加上point1到point2的距离
-            }//这个if的逻辑可以在草稿上演示一下,point1到原点的距离加上point1到point2的距离就是被更新的被遍历的点到原点的最短距离,这个最短距离取代了之前获得的被遍历的点到原点的最短距离
+                distance[point2] = distance[point1] + weight;//那么point2目前到原点的最短路径等于point1目前到原点的最短路径加上point1到point2的距离
+            }//这个if的逻辑可以在草稿上演示一下,point1目前到原点的最短路径加上point1到point2的距离就是被更新的被遍历的点到原点的最短路径,这个最短路径取代了之前获得的被遍历的点到原点的最短路径
         }
     }
     return distance;
