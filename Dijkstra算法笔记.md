@@ -159,7 +159,7 @@ vector<int> dijkstra(int start, int n)//dijkstra算法函数,要求输入一个�
         }
         visited[point1] = true;//标记为已处理,这个标记和上面的if判断的顺序没有严格要求,只是如果这个放在if的上面,如果所有节点都处理完毕后,会把最后一个已经处理,已经visit的point1给重新赋一次true
         for (auto analysis : graph[point1])//这个for的作用是遍历point1的所有邻居,更新距离,注意graph是一个二维数组,每个元素是一个pair
-        {//特别注意,上面程序大for循环内嵌的最后一个for循环中analysis并不代表vector<pair<int,int>>,而是代表pair<int,int>,for(auto analysis:graph[point1])这种语法,在C++11之后,本身代表遍历冒号的顺序容器的每一个元素,所以这里是遍历顺序容器vector中的每一个pair
+        {//这个for循环中analysis并不代表vector<pair<int,int>>,而是代表pair<int,int>;for (auto analysis : graph[point1])这种语法,在C++11之后,本身代表遍历冒号的顺序容器的每一个元素,所以这里是遍历顺序容器vector中的每一个pair,在进行程序的语言移植时需要特别注意
             int point2 = analysis.first;//这个point2表示的是被遍历的点
             int weight = analysis.second;//表示权重,也就是距离
             if (!visited[point2] && distance[point2] > distance[point1] + weight)//如果point2没被visit且point2到原点的距离大于point1加point1到point2的距离
