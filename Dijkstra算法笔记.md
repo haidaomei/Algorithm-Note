@@ -175,3 +175,44 @@ vector<int> dijkstra(int start, int n)//dijkstra算法函数,要求输入一个�
 注意,这里被遍历不代表被分析,即使被遍历不被分析,那么在分析下一个点时,同样的点可能会再被遍历
 
 这个算法还可以被简单地优化成输入特定的二维数组,输入该二维数组代表的图的起点,输入要分析的点数,声明大概是vector<int> dijkstra(vector<vector<pair<int, int>>> graph, int start, int n)
+
+MATLAB移植版,图使用以下测试样例隐含的表示方法给出:
+
+```
+function distance=dijkstra(graph,start,n)
+distance=zeros(1,n);
+for a=1:n
+    distance(a)=Inf;
+end
+distance(start)=0;
+visited=zeros(1,n);
+for b=1:n
+    point1=-1;
+    minimumdistance=Inf;
+    for c=1:n
+        if ~visited(c)&&distance(c)<minimumdistance
+            minimumdistance=distance(c);
+            point1=c;
+        end
+    end
+    if point1==-1
+        break;
+    end
+    visited(point1)=1;
+    for analysis=graph(point1,:)
+        matrix=analysis{1};
+        point2=matrix(1);
+        weight=matrix(2);
+        if ~visited(point2)&&distance(point2)>distance(point1)+weight
+            distance(point2)=distance(point1)+weight;
+        end
+    end
+end
+```
+
+测试样例:使用二维元胞数组,每个元胞为一个包含两个数字的行向量
+
+```
+graph={[1,1],[2,5];[2,2],[3,6];[3,3],[0,Inf];[0,4],[0,Inf]}
+graph={[2,1],[3,5],[4,4];[1,1],[3,2],[4,6];[1,5],[2,2],[4,3];[1,4],[2,6],[3,3]}
+```
